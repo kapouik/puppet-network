@@ -62,8 +62,8 @@ Puppet::Type.type(:network_route).provide(:redhat) do
         cidr_target = "#{network}/#{IPAddr.new(netmask).to_i.to_s(2).count('1')}"
 
         new_route[:name]    = cidr_target
-	new_route[:network] = network.to_i.to_s(2).count('1')
-        new_route[:netmask] = netmask
+	new_route[:network] = network
+	new_route[:netmask] = netmask.to_i.to_s(2).count('1')
       end
 
       routes << new_route
