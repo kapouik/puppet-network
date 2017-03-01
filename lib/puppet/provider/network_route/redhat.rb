@@ -66,7 +66,6 @@ Puppet::Type.type(:network_route).provide(:redhat) do
         new_route[:name]    = cidr_target
 	new_route[:network] = network
 	new_route[:netmask] = prefix
-	notice("#{route[0]};#{cidr_target};#{network};#{netmask};#{netmask.to_i};#{netmask.to_i.to_s(2)};#{netmask.to_i.to_s(2).count('1')}")
       end
 
       routes << new_route
