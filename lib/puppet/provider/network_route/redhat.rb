@@ -59,7 +59,9 @@ Puppet::Type.type(:network_route).provide(:redhat) do
       else
         # use the CIDR version of the target as :name
         network, netmask = route[0].split('/')
-        cidr_target = "#{network}/#{IPAddr.new(netmask).to_i.to_s(2).count('1')}"
+	prefix = IPAddr.new(netmask).to_i.to_s(2).count('1')
+	#cidr_target = "#{network}/#{IPAddr.new(netmask).to_i.to_s(2).count('1')}"
+	cidr_target = "#{network}/#{prefix}"
 
         new_route[:name]    = cidr_target
 	new_route[:network] = network
